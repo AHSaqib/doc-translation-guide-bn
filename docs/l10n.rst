@@ -1,17 +1,16 @@
 .. note::
-	This chapter explains how translations work. It is useful for getting a better understanding of the workflow and the technology but it isn't required in order to start translating Linux Mint. If you want to skip it, you can go straight to the next chapter.
+    এই অধ্যায়টি অনুবাদের কাজ কীভাবে হয় তা ব্যাখ্যা করে। এটি কাজের প্রবাহ এবং প্রযুক্তি সম্পর্কে একটি ভালো ধারণা পেতে সহায়ক, তবে লিনাক্স মিন্ট অনুবাদ শুরু করার জন্য এটি প্রয়োজনীয় নয়। যদি আপনি এটি বাদ দিতে চান, তাহলে সরাসরি পরবর্তী অধ্যায়ে যেতে পারেন।
 
+স্থানীয়করণ
+==========
 
-Localization
-============
+সফটওয়্যার অ্যাপ্লিকেশন এবং ব্যবহারকারী ইন্টারফেসগুলি ইংরেজিতে ডিজাইন করা হয়।
 
-Software applications and user interfaces are designed in English.
+লিনাক্স মিন্ট ডেভেলপাররা একটি লাইব্রেরি এবং টুলসের সেট ব্যবহার করেন যাকে Gettext বলা হয়, এগুলো ব্যবহার করে স্থানীয়করণ করা হয়।
 
-The Linux Mint developers use a library and a set of tools called Gettext to localize them.
+যদি আপনি সোর্স কোড দেখেন, আপনি প্রায়ই একটি আন্ডারস্কোর ফাংশন দেখতে পাবেন যা ইংরেজি শব্দ এবং বাক্যগুলোকে আবৃত করে। উদাহরণস্বরূপ, ``_("Yes")`` ব্যবহার করা হয় ``"Yes"`` এর পরিবর্তে। এই আন্ডারস্কোর Gettext-কে নির্দেশ করে এবং এটি দেখায় যে স্ট্রিং ``"Yes"`` স্থানীয়কৃত।
 
-If you look at source code, you'll often see an underscore function wrapping English words and sentences. For instance ``_("Yes")`` instead of ``"Yes"``. This underscore refers to Gettext and indicates that the string ``"Yes"`` is localized.
-
-Here's an example in Python. The code below creates two buttons. They're both labeled ``Yes``, but button2 is localized whereas button1 isn't.
+এখানে একটি উদাহরণ দেওয়া হলো Python-এ। নিচের কোড দুটি বাটন তৈরি করে। উভয় বাটনেই ``Yes`` লেখা থাকবে, তবে button2 স্থানীয়কৃত হবে, অথচ button1 হবে না।
 
 .. code-block:: python
 
@@ -20,26 +19,25 @@ Here's an example in Python. The code below creates two buttons. They're both la
     button1.set_label("Yes")
     button2.set_label(_("Yes"))
 
-At runtime, button2 will be properly translated, whereas button1 will always show in English.
+রানটাইমে, button2 সঠিকভাবে অনুবাদ হবে, কিন্তু button1 সবসময় ইংরেজিতে থাকবে।
 
-If you run this code in French, you'll see a ``Yes`` button, and a ``Oui`` button.
-If you run it in Spanish, you'll see a ``Yes`` button, and a ``Sí`` button.
+যদি আপনি এই কোডটি ফরাসি ভাষায় রান করেন, আপনি একটি ``Yes`` বাটন এবং একটি ``Oui`` বাটন দেখতে পাবেন।
+যদি এটি স্প্যানিশ ভাষায় রান করেন, আপনি একটি ``Yes`` বাটন এবং একটি ``Sí`` বাটন দেখতে পাবেন।
 
-Of course, for this to work, French and Spanish translations for ``Yes`` have to be available. If they aren't, the second button will show in English.
+অবশ্যই, এটি কাজ করার জন্য ফরাসি এবং স্প্যানিশ ভাষার জন্য ``Yes`` শব্দটির অনুবাদ উপলব্ধ থাকতে হবে। যদি না থাকে, তাহলে দ্বিতীয় বাটনটি ইংরেজিতে প্রদর্শিত হবে।
 
-POT Templates
-=============
+POT টেমপ্লেট
+============
 
-For each project, the Linux Mint developers extract all the English words and sentences and put everything that has to be translated into a ``.pot`` file called the ``PO template``.
+প্রতিটি প্রকল্পের জন্য, লিনাক্স মিন্ট ডেভেলপাররা সমস্ত ইংরেজি শব্দ এবং বাক্য বের করে একটি ``.pot`` ফাইলে সংরক্ষণ করেন, যেটিকে বলা হয় ``PO template``।
 
-They then upload that file to Launchpad, where translators can translate the words and sentences into their own languages.
+তারপর তারা সেই ফাইলটি Launchpad-এ আপলোড করেন, যেখানে অনুবাদকরা সেই শব্দ এবং বাক্যগুলো তাদের নিজস্ব ভাষায় অনুবাদ করতে পারেন।
 
-PO files
+PO ফাইল
 ========
 
-The Linux Mint development team then downloads all the translations from Launchpad and packages them into the operating system.
+লিনাক্স মিন্ট ডেভেলপমেন্ট টিম তারপর Launchpad থেকে সমস্ত অনুবাদ ডাউনলোড করে এবং সেগুলোকে অপারেটিং সিস্টেমে প্যাকেজ করে।
 
-The translations consist of ``.po`` files that are compiled and installed as ``.mo`` files on the filesystem, usually in ``/usr/share/locale``.
+অনুবাদগুলি ``.po`` ফাইল হিসেবে থাকে, যেগুলি কম্পাইল হয়ে ফাইল সিস্টেমে ``.mo`` ফাইল হিসেবে ইনস্টল করা হয়, সাধারণত ``/usr/share/locale``-এ।
 
-They are packaged in their relevant applications, or sometimes in translation packages such as ``mint-translations`` (for the Mint tools) or ``cinnamon-l10n`` (for Cinnamon).
-
+এগুলি তাদের সংশ্লিষ্ট অ্যাপ্লিকেশনগুলোতে প্যাকেজ করা হয়, অথবা কখনও কখনও অনুবাদ প্যাকেজগুলোর মধ্যে যেমন ``mint-translations`` (Mint টুলসের জন্য) অথবা ``cinnamon-l10n`` (Cinnamon এর জন্য) প্যাকেজে রাখা হয়।
