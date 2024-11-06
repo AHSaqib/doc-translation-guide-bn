@@ -1,99 +1,96 @@
+Launchpad ব্যবহার করে
+====================
 
-Using Launchpad
-===============
+Launchpad অ্যাকাউন্ট তৈরি করুন
+-----------------------------
 
-Create a Launchpad account
---------------------------
+যদি আপনার আগে থেকেই একটি Launchpad অ্যাকাউন্ট না থাকে, তাহলে `রেজিস্ট্রেশন পৃষ্ঠা <https://login.launchpad.net/+login>`_ ব্যবহার করে একটি নতুন অ্যাকাউন্ট তৈরি করুন।
 
-If you don't have a Launchpad account already, use the `registration page <https://login.launchpad.net/+login>`_ to create a new one.
+আপনার অ্যাকাউন্টের জন্য ভাষাগুলি এডিট করুন এবং আপনি যেসব ভাষায় সাবলীল, সেগুলি যোগ করুন।
 
-Edit the languages for your account and add all the languages you are fluent in.
+আপনার ভাষার জন্য অনুবাদ দল যোগ করুন
+--------------------------------
 
-
-Join the translation team for your language
--------------------------------------------
-
-To see all the languages and their current status, go to `Translation status by language <https://translations.launchpad.net/linuxmint/latest/>`_ and click on :guilabel:`View all languages`.
+সব ভাষা এবং তাদের বর্তমান স্থিতি দেখতে, `ভাষা অনুযায়ী অনুবাদ স্থিতি <https://translations.launchpad.net/linuxmint/latest/>`_-এ যান এবং :guilabel:`View all languages` ক্লিক করুন।
 
 .. figure:: images/launchpad1.png
     :width: 500px
     :align: center
 
-Click on your language and then on the name of the team which is responsible for translations in your language:
+আপনার ভাষায় ক্লিক করুন এবং তারপর সেই দলের নামের ওপর ক্লিক করুন, যারা আপনার ভাষায় অনুবাদগুলোর জন্য দায়ী:
 
 .. figure:: images/launchpad2.png
     :width: 500px
     :align: center
 
-Click :guilabel:`Join the team`:
+: gualabel:`Join the team` ক্লিক করুন:
 
 .. figure:: images/launchpad3.png
     :width: 500px
     :align: center
 
 
-Translate using Launchpad
--------------------------
+Launchpad ব্যবহার করে অনুবাদ করুন
+------------------------------
 
-Once you've joined the translation team, you can start translating.
+একবার আপনি অনুবাদ দলের সদস্য হলে, আপনি অনুবাদ শুরু করতে পারবেন।
 
-Click on your language, choose a project which has missing translations and click on the number of untranslated items.
+আপনার ভাষায় ক্লিক করুন, একটি প্রকল্প বাছুন যেটিতে অনুবাদ অসম্পূর্ণ রয়েছে এবং অনুবাদহীন আইটেমগুলোর সংখ্যায় ক্লিক করুন।
 
 .. figure:: images/launchpad4.png
     :width: 500px
     :align: center
 
-At the top of the page, make sure that you are in ``Reviewer mode`` (otherwise your translations won't be approved automatically and they will wait for somebody else to review them).
+পৃষ্ঠার উপরে, নিশ্চিত করুন যে আপনি ``Reviewer mode``-এ আছেন (অন্যথায় আপনার অনুবাদগুলো স্বয়ংক্রিয়ভাবে অনুমোদিত হবে না এবং অন্য কেউ সেগুলো পর্যালোচনা করার জন্য অপেক্ষা করবে)।
 
-Using POEdit
-============
+POEdit ব্যবহার করে
+================
 
-If you want to translate faster, you can download the translations as a ``.po`` file, edit that file with a tool called ``poedit`` and upload the edited ``.po`` file back into ``Launchpad``.
-
+যদি আপনি দ্রুত অনুবাদ করতে চান, তাহলে আপনি অনুবাদগুলি ``.po`` ফাইল হিসেবে ডাউনলোড করতে পারেন, সেই ফাইলটি একটি টুল ব্যবহার করে যেটিকে ``poedit`` বলা হয় এডিট করুন এবং সম্পাদিত ``.po`` ফাইলটি আবার Launchpad-এ আপলোড করুন।
 
 .. _download-ref:
 
-Download the translations
--------------------------
+অনুবাদ ডাউনলোড করুন
+-------------------
 
-Choose a project and click :guilabel:`Download translation`:
+একটি প্রকল্প বাছুন এবং :guilabel:`Download translation` ক্লিক করুন:
 
 .. figure:: images/launchpad5.png
     :width: 500px
     :align: center
 
-Choose ``PO format`` as the file format and click :guilabel:`Request Download`.
+ফাইল ফরম্যাট হিসেবে ``PO format`` নির্বাচন করুন এবং :guilabel:`Request Download` ক্লিক করুন।
 
-Wait for Launchpad to send you an email (this can take a little while). In the email you will find a download link to either the ``.po`` file directly or a compressed archive containing the ``.po`` file.
+Launchpad আপনাকে একটি ইমেইল পাঠাবে (এটি কিছুটা সময় নিতে পারে)। ইমেইলে আপনি একটি ডাউনলোড লিঙ্ক পাবেন যা সরাসরি ``.po`` ফাইল অথবা একটি কম্প্রেসড আর্কাইভ containing the ``.po`` ফাইলের লিঙ্ক হতে পারে।
 
-Use POEdit
-----------
+POEdit ব্যবহার করুন
+------------------
 
-To install POEdit, open a terminal and type:
+POEdit ইনস্টল করতে, একটি টার্মিনাল খুলুন এবং টাইপ করুন:
 
 .. code-block:: console
 
     apt install poedit
 
-Open the ``.po`` file you got from Launchpad with POEdit:
+Launchpad থেকে পাওয়া ``.po`` ফাইলটি POEdit দিয়ে খুলুন:
 
 .. figure:: images/poedit.png
     :width: 500px
     :align: center
 
-Browse the menus and familiarize yourself with the keyboard shortcuts. If you use these shortcuts and the built-in spell checker, you'll translate much faster with POEdit than with Launchpad.
+মেনুগুলি ব্রাউজ করুন এবং কীবোর্ড শর্টকাটগুলি জানুন। আপনি যদি এই শর্টকাটগুলি এবং অন্তর্নির্মিত বানান চেকার ব্যবহার করেন, তাহলে POEdit দিয়ে আপনি Launchpad-এর তুলনায় অনেক দ্রুত অনুবাদ করতে পারবেন।
 
-When finished, click :guilabel:`Save`.
+সম্পন্ন হলে, :guilabel:`Save` ক্লিক করুন।
 
-Upload the translations back into Launchpad
--------------------------------------------
+অনুবাদগুলি আবার Launchpad-এ আপলোড করুন
+---------------------------------------
 
-In Launchpad, click :guilabel:`Upload translation`.
+Launchpad-এ, :guilabel:`Upload translation` ক্লিক করুন।
 
 .. figure:: images/launchpad6.png
     :width: 500px
     :align: center
 
-Select your ``.po`` file and click :guilabel:`Upload`.
+আপনার ``.po`` ফাইলটি নির্বাচন করুন এবং :guilabel:`Upload` ক্লিক করুন।
 
-Click ``Translation Import Queue`` to view the `Translation import queue for latest <https://translations.launchpad.net/linuxmint/latest/+imports>`_. If your upload is marked as ``Needs Review``, click the ``Edit`` button (symbolized by a pen symbol), choose the correct template (i.e. project), and click ``Approve``.
+``Translation Import Queue`` ক্লিক করুন এবং দেখুন `সর্বশেষ অনুবাদ ইমপোর্ট কিউ <https://translations.launchpad.net/linuxmint/latest/+imports>`_। যদি আপনার আপলোডটি ``Needs Review`` হিসাবে চিহ্নিত হয়, তবে ``Edit`` বোতামটি (যেটি কলমের চিহ্ন দ্বারা চিহ্নিত) ক্লিক করুন, সঠিক টেমপ্লেট (যেমন প্রকল্প) নির্বাচন করুন এবং ``Approve`` ক্লিক করুন।
