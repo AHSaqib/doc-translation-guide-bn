@@ -1,20 +1,22 @@
-Linux Mint Translation Guide
+লিনাক্স মিন্ট অনুবাদ নির্দেশনা
 ============================
 
-This document can be read at http://linuxmint-translation-guide.readthedocs.io.
+.. This document can be read at http://linuxmint-translation-guide.readthedocs.io.
 
-The docs are written in `reStructuredText <http://www.sphinx-doc.org/rest.html>`_.
+এই নির্দেশনাটি লিনাক্স মিন্ট সহজে বাংলায় অনুবাদ করার পদ্ধতি সংক্রান্ত তথ্য সরবরাহ করে।
 
-Build:
+এই নির্দেশনাটি `reStructuredText <http://www.sphinx-doc.org/rest.html>`_ এ লিখিত হয়েছে।
+
+বিল্ড:
 ------
 
 .. image:: https://readthedocs.org/projects/linuxmint-translation-guide/badge/?version=latest
     :target: http://linuxmint-translation-guide.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
 
-To build locally install ``python-sphinx`` and run ``make html`` in the ``docs`` directory.
+স্থানীয়ভাবে বিল্ড করতে ``python-sphinx`` ইনস্টল করুন এবং ``docs`` ডিরেক্টরিতে ``make html`` রান করুন।
 
-Resources:
+সংস্থান:
 ----------
 
 * https://thomas-cokelaer.info/tutorials/sphinx/rest_syntax.html
@@ -22,7 +24,7 @@ Resources:
 * http://www.writethedocs.org/guide/
 * https://developers.google.com/style/highlights
 
-License:
+লাইসেন্স:
 --------
 
 .. image:: https://img.shields.io/badge/code-GPLv3-blue.svg
