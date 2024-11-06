@@ -1,117 +1,116 @@
+আপনার অনুবাদ যাচাই করুন
+====================
 
-Verify your translations
-========================
+আপনার PO ফাইল ডাউনলোড করুন
+--------------------------
 
-Download your PO file
----------------------
+যদি আপনার অনুবাদগুলি Launchpad-এ থাকে, তাহলে সেগুলি ``.po`` ফাইল হিসেবে ডাউনলোড করুন, যেমন :ref:`download-ref`-এ ব্যাখ্যা করা হয়েছে।
 
-If your translations are on Launchpad, download them as a PO file, as explained in :ref:`download-ref`.
+আপনার হোম ডিরেক্টরিতে একটি ``translations`` ডিরেক্টরি তৈরি করুন এবং সেখানে আপনার PO ফাইলটি রাখুন।
 
-Create a ``translations`` directory in your home directory and put your PO file in it.
+mint-dev-tools ইনস্টল করুন
+-------------------------
 
-Install mint-dev-tools
-----------------------
+আপনার অনুবাদ যাচাই করতে, আপনাকে ``mint-check-translations`` নামক একটি টুল প্রয়োজন, যা ``mint-dev-tools`` এর অংশ।
 
-To verify your translations you need a tool called ``mint-check-translations``, which is part of ``mint-dev-tools``.
-
-Open a terminal and type:
+একটি টার্মিনাল খুলুন এবং টাইপ করুন:
 
 .. code-block:: console
 
     apt install mint-dev-tools
 
-Verify your PO file with mint-check-translations
-------------------------------------------------
+mint-check-translations দিয়ে আপনার PO ফাইল যাচাই করুন
+-----------------------------------------------------
 
-To check your translations, open a terminal and type:
+আপনার অনুবাদগুলো চেক করতে, একটি টার্মিনাল খুলুন এবং টাইপ করুন:
 
 .. code-block:: console
 
     mint-check-translations ~/translations
 
-This opens the translation checking tool and highlights errors in your PO file:
+এটি অনুবাদ যাচাই করার টুল খুলবে এবং আপনার PO ফাইলে ত্রুটিগুলি হাইলাইট করবে:
 
 .. figure:: images/mint-check-translations.png
     :width: 500px
     :align: center
 
-This tool won't highlight translation mistakes you might make (grammar, spelling, etc.), but it will ensure your translations are properly structured and won't affect the software you're translating. Among other things, this tool checks that special meaningful characters are preserved, that variables are still there, etc.
+এই টুলটি আপনার অনুবাদে থাকা ভুলগুলিকে (ব্যাকরণ, বানান ইত্যাদি) হাইলাইট করবে না, তবে এটি নিশ্চিত করবে যে আপনার অনুবাদ সঠিকভাবে গঠন করা হয়েছে এবং আপনার অনুবাদ করা সফটওয়্যারের ওপর কোনো প্রভাব ফেলবে না। এর মধ্যে অন্যান্য বিষয়গুলোর মধ্যে এই টুলটি পরীক্ষা করে যে বিশেষ অর্থবহ অক্ষরগুলি সঠিকভাবে সংরক্ষিত হয়েছে, ভেরিয়েবলগুলি ঠিক আছে, ইত্যাদি।
 
 .. note::
-	This tool can scan multiple PO files and recurse through sub-directories. It is used by the Linux Mint team to check all translations.
+    এই টুলটি একাধিক PO ফাইল স্ক্যান করতে পারে এবং সাবডিরেক্টরিগুলোর মধ্যেও রিকার্সিভভাবে যাচাই করতে পারে। এটি লিনাক্স মিন্ট টিম দ্বারা সমস্ত অনুবাদ যাচাই করার জন্য ব্যবহৃত হয়।
 
-Common mistakes
-===============
+সাধারণ ভুল
+==========
 
-In software applications
-------------------------
+সফটওয়্যার অ্যাপ্লিকেশনগুলিতে
+-------------------------
 
-The most commonly made mistake when translating source code is not respecting variables.
+সোর্স কোড অনুবাদ করার সবচেয়ে সাধারণ ভুল হলো ভেরিয়েবলগুলিকে সঠিকভাবে সম্মান না করা।
 
-Here are a few examples of wrong translations:
+এখানে কিছু ভুল অনুবাদের উদাহরণ দেওয়া হলো:
 
 +-----------------------------------------+----------------------------------------------+-----------------------------------+
-| Original                                | Translation                                  | Error                             |
+| মূল                                       | অনুবাদ                                      | ভুল                               |
 +=========================================+==============================================+===================================+
-| The file %s could not be found          | Le fichier % s est introuvable               | % s instead of %s                 |
+| The file %s could not be found          | Le fichier % s est introuvable               | % s এর পরিবর্তে %s               |
 +-----------------------------------------+----------------------------------------------+-----------------------------------+
-| The file %s could not be found          | Le fichier %d est introuvable                | %d instead of %s                  |
+| The file %s could not be found          | Le fichier %d est introuvable                | %d এর পরিবর্তে %s                |
 +-----------------------------------------+----------------------------------------------+-----------------------------------+
-| The file %s could not be found          | Le fichier est introuvable                   | Missing variable                  |
+| The file %s could not be found          | Le fichier est introuvable                   | ভেরিয়েবল অনুপস্থিত              |
 +-----------------------------------------+----------------------------------------------+-----------------------------------+
-| The file %(file)s could not be found    | Le fichier %(fichier)s est introuvable       | Missing variable %(file)s         |
+| The file %(file)s could not be found    | Le fichier %(fichier)s est introuvable       | ভেরিয়েবল %(file)s অনুপস্থিত    |
 +-----------------------------------------+----------------------------------------------+-----------------------------------+
 
-If variables are malformed, missing, or if their name doesn't match the original source code, the application you are translating could crash when run in your language.
+যদি ভেরিয়েবলগুলি ভুলভাবে গঠিত হয়, অনুপস্থিত থাকে, অথবা তাদের নাম মূল সোর্স কোডের সাথে মেলে না, তাহলে আপনি যে অ্যাপ্লিকেশনটির অনুবাদ করছেন তা আপনার ভাষায় চালানোর সময় ক্র্যাশ করতে পারে।
 
-In documentation written in RST
--------------------------------
+RST-এ লেখা ডকুমেন্টেশনে
+-------------------------
 
-The most commonly made mistake when translating RST documentation is not respecting double quotes, arrows or RST directives.
+RST ডকুমেন্টেশন অনুবাদ করার সবচেয়ে সাধারণ ভুল হলো ডাবল কোটেশন, তীরচিহ্ন বা RST নির্দেশনাগুলি সঠিকভাবে সম্মান না করা।
 
-Here are a few examples of wrong translations:
+এখানে কিছু ভুল অনুবাদের উদাহরণ দেওয়া হলো:
 
 +-----------------------------------------+----------------------------------------------+-----------------------------------+
-| Original                                | Translation                                  | Error                             |
+| মূল                                       | অনুবাদ                                      | ভুল                               |
 +=========================================+==============================================+===================================+
-| Open a terminal and type \`\`ls\`\`     | Ouvrez un terminal et tapez "ls"             | " instead of \`\`                 |
+| Open a terminal and type \`\`ls\`\`     | Ouvrez un terminal et tapez "ls"             | " এর পরিবর্তে \`\`              |
 +-----------------------------------------+----------------------------------------------+-----------------------------------+
-| Click \:guilabel:\`Save\`               | Cliquez sur \:guilabel:\'Save\'              | ' instead of \`                   |
+| Click \:guilabel:\`Save\`               | Cliquez sur \:guilabel:\'Save\'              | ' এর পরিবর্তে \`                |
 +-----------------------------------------+----------------------------------------------+-----------------------------------+
-| Click \:guilabel:\`Save\`               | Cliquez sur \:guilabel:\`Save                | Missing one \`                    |
+| Click \:guilabel:\`Save\`               | Cliquez sur \:guilabel:\`Save                | এক \` অনুপস্থিত                |
 +-----------------------------------------+----------------------------------------------+-----------------------------------+
-| Click \:guilabel:\`Save\`               | Cliquez sur guilabel:\`Save\`                | Missing one :                     |
+| Click \:guilabel:\`Save\`               | Cliquez sur guilabel:\`Save\`                | এক \: অনুপস্থিত                |
 +-----------------------------------------+----------------------------------------------+-----------------------------------+
-| Click \:menuselection:\`Menu --> Save\` | Cliquez sur \:menuselection:\`Menu -> Save\` | \-> instead of \-->               |
+| Click \:menuselection:\`Menu --> Save\` | Cliquez sur \:menuselection:\`Menu -> Save\` | \-> এর পরিবর্তে \-->            |
 +-----------------------------------------+----------------------------------------------+-----------------------------------+
 
-Special characters such as `````, ``-->``, directives such as ``:guilabel:``, ``:menuselection::``, and links using ``<`` and ``>`` are important because they define the structure and the look of the document.
+বিশেষ চরিত্র যেমন `````, ``-->``, নির্দেশনা যেমন ``:guilabel:``, ``:menuselection::``, এবং ``<`` এবং ``>`` ব্যবহার করা লিঙ্কগুলি গুরুত্বপূর্ণ, কারণ এগুলি ডকুমেন্টের গঠন এবং চেহারা নির্ধারণ করে।
 
-Make sure to respect them and translate content accurately.
+এগুলি সম্মান করুন এবং সঠিকভাবে অনুবাদ করুন।
 
-If you think the original sentence is missing something, then propose a modification to the original documentation. You cannot deviate or add content to your translation which isn't present in the original.
+যদি আপনি মনে করেন যে মূল বাক্যটি কিছু বাদ দিয়েছে, তবে মূল ডকুমেন্টেশনে একটি সংশোধন প্রস্তাব করুন। আপনি আপনার অনুবাদে কোনো কিছু অতিরিক্ত যোগ করতে পারবেন না যা মূল ডকুমেন্টে নেই।
 
-Other mistakes
---------------
+অন্যান্য ভুল
+===========
 
-Politics
-````````
+রাজনীতি
+--------
 
-When translating content, your main worry should be the user.
+অনুবাদ করার সময়, আপনার প্রধান চিন্তা হওয়া উচিত ব্যবহারকারী।
 
-The user experience is what matters the most.
+ব্যবহারকারীর অভিজ্ঞতাই সবচেয়ে গুরুত্বপূর্ণ।
 
-Software and documentation should be easy to use and any text you translate should be easy to read and to understand.
+সফটওয়্যার এবং ডকুমেন্টেশন সহজে ব্যবহারযোগ্য হওয়া উচিত এবং আপনার অনুবাদ করা যেকোনো টেক্সট সহজে পড়া এবং বোঝা উচিত।
 
-The user experience is more important than any other consideration, including official language definitions, language preservation policies or politics in general.
+ব্যবহারকারীর অভিজ্ঞতা অন্য যেকোনো বিবেচনার চেয়ে বেশি গুরুত্বপূর্ণ, যার মধ্যে রয়েছে সরকারি ভাষার সংজ্ঞা, ভাষা সংরক্ষণ নীতিমালা অথবা সাধারণ রাজনীতি।
 
-If the official translation for a given word isn't commonly known or used by users, you should not use it. Prefer the terms used by most people instead. The goal isn't to educate users or to enforce anything. Correctness and exactitude are important but not as much as user experience.
+যদি একটি নির্দিষ্ট শব্দের সরকারি অনুবাদটি সাধারণভাবে পরিচিত না হয় বা ব্যবহারকারীদের মধ্যে ব্যবহৃত না হয়, তবে আপনি তা ব্যবহার করবেন না। বরং এমন শব্দ ব্যবহার করুন যা বেশিরভাগ মানুষ ব্যবহার করে। লক্ষ্য হলো ব্যবহারকারীদের শিক্ষা দেওয়া বা কিছু চাপিয়ে দেওয়া নয়। সঠিকতা এবং নির্ভুলতা গুরুত্বপূর্ণ, কিন্তু ব্যবহারকারীর অভিজ্ঞতার চেয়ে তা কম গুরুত্বপূর্ণ।
 
-If everyone around you says A and your government and/or dictionary says B, whether you agree with one side or the other isn't relevant, go for A.
+যদি আপনার চারপাশের সবাই A বলে এবং আপনার সরকার বা অভিধান B বলে, তাহলে আপনি একপক্ষের সাথে একমত হন বা না হন, তা irrelevant; A ব্যবহার করুন।
 
-Translating content which shouldn't be translated
-`````````````````````````````````````````````````
+যে কনটেন্টটি অনুবাদ করা উচিত নয় তা অনুবাদ করা
+------------------------------------------
 
-If something is in English on the screen, refer to it in English as well.
+যদি কোনো কিছু স্ক্রীনে ইংরেজিতে থাকে, তবে সেটি ইংরেজিতেই উল্লেখ করুন।
 
-For instance, the boot menu for Linux Mint says ``Start Linux Mint``, no matter what language the user uses. So it should be refered to as ``Start Linux Mint`` in any documentation, whether that documentation is in English or not.
+যেমন, লিনাক্স মিন্টের বুট মেনুতে লেখা থাকে ``Start Linux Mint``, তা ব্যবহারকারীর যে ভাষাই হোক না কেন। তাই এটি যেকোনো ডকুমেন্টেশনে ``Start Linux Mint`` হিসেবেই উল্লেখ করা উচিত, সেটা ইংরেজিতে হোক বা অন্য কোনো ভাষায়।
